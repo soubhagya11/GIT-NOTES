@@ -1,0 +1,215 @@
+#--------------------------------------------------------------#
+                        GIT-NOTE
+
+what is git?
+--> Git is a distributed version control system used to track changes in source code during software development. It allows multiple developers to collaborate on a project, managing changes and maintaining a history of revisions. Git enables users to branch, merge, and revert changes, ensuring code integrity and making it easier to work on different features simultaneously. It is commonly used with platforms like GitHub or GitLab for remote repository management.
+
+GIT-COMMANDS
+--------------
+
+git config --global user.name --- to check configured name 
+git config --global user.email --- to check configured email
+
+
+--------------------git workflow------------
+
+git add -----to add file into staging area from local working directory
+git status ----to see the status of the file where it is 
+git commit -m "comment"
+
+
+---------------------#git changes#-----------
+-------------------------------------------------
+
+git diff ------ compare changes local directory to staging area
+git diff --staged --comapare chnages staging to local repo
+git diff head ----comapare changes local directory to local repo
+
+git diff commit id to commit id -----compare chnages in to two commits
+
+
+
+
+
+
+---------------------------------------------------------------------------------
+                  # Revert changes on git #
+-------------------------------------------------------------------------------
+# Revert changes from working directory #
+
+   git restore <file_name> 
+          or
+   git checkout -- <file_name>     like undo command
+
+
+# Revert changes from Staging Area #
+
+   git restore --staged <file_name>  #to revert changes from Staging area to working directory  
+  
+
+# Revert changes from Local Repository #
+ 
+   git reset HEAD~1         # to revert changes from local repo to working directory 
+   
+
+#if The git reset HEAD~2 command moves the current branch backward by two commits
+   
+Note: if you can give git status or any git commit command everything clear no untracked file no staging files 
+
+                                                          
+Git reset we have three modes (optional)
+
+Mixed—its is default mode discard the commits both local repo and staging area 
+Git reset --mixed commit id   
+
+
+Soft -- discard the commits in local repo only file will be available both staging and working directory
+Git reset --soft commit id   
+
+Hard : discard the commits in local repo , staging and working directory aswell
+Git reset --hard commit id   
+
+-------------------------GITHUB------------------------------
+ GitHub is one of the most popular resources for developers to share code and work on projects together. It’s free, easy to use, and has become central in the movement toward open-source software.
+
+
+git clone ---- to clone entire repository in first time 
+
+git pull ------to pull the updates and chnages from repository
+
+git push ------to push the local updates into remote repo
+
+
+
+
+-----git push-----
+
+# push the changes by using SSH #
+
+### To generate SSH Key
+
+ssh-keygen (give this command into your terminal)
+
+copy the publickey id_rsa.pub
+
+paste into github ssh keys 
+
+settings-->ssh and GPG keys--> Add new ssh key and give any name and paste it your publickey over there 
+
+
+
+
+
+## git local to remote sync (how to add that locally created folder into git hub)
+after creating repos locally and remote we have to give following commands 
+git remote set-url origin git@github.com:User/UserRepo.git
+now it will sync we can start pull push commands
+
+-----------------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------------------------------
+# push the chnages by using GitHUb Token #
+
+###To generate Token 
+
+settings-->Developer settings-->personal access token -->Token classic --> generate token
+
+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
+
+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
+
+# Example:
+
+git remote set-url origin https://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@github.com:/user/repository.git
+
+git push https://<token>:/user/repository.git
+
+Examples:
+
+git push https://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@github.com:/user/repository.git
+
+git push https://${git_token}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
+
+gut push https://<token>@github.com:/CloudTechDevOps/practice.git
+
+gut push https://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@github.com:/CloudTechDevOps/practice.git
+
+
+
+
+
+
+
+git remote set-url origin https://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@github.com:/CloudTechDevOps/local.git
+
+
+
+
+ 
+
+
+Mapping local repo to remote repository without cloning 
+
+…####### create a new repository on the command line############
+touch file1, file2, file3 
+git init
+git add .
+git commit -m "first commit"
+git remote add <username> <ssh url of repo>
+ex:
+git remote add  CloudTechDevOps git@github.com:CloudTechDevOps/different.git
+
+git remote -v (optional) if we get an error: remote origin already exists.
+git remote remove origin  remove existing origin map and add git remote 
+git branch command ton check which branch you are in.
+git branch -M main    #by default locally created directories updated with master branch but if the remote is main branch we need to rename the branch or create new branch local or create same branch in remote finally we need to map local and remote same branch 
+(or) create same branch in remote "git push --set-upstream <CloudTechDevOps(username)> master"
+git push -u origin main
+
+
+----------------------------------- # Git Branching #-------------------------------
+
+
+BRANCHES:
+It's an individual process of development for code.
+we create individual branch in real-time to do test and developed.
+each developer will work on their own branch.
+At the end we will merge all branches into actual branch.
+Default branch is Master.
+
+git branch		        : to list the branches
+git branch dev	                : to create a new branch
+git checkout dev	        : to switch from one branch to another.
+git checkout -b dev             : to create and switch from one branch to another.
+git branch -m oldname newname	: to rename a branch
+git branch -D dev	        : to delete a branch
+
+## git pull ##
+git pull origin <branch name> if multiple branches are there in remote 
+
+git pull ---if only one branch is there 
+
+after that merge the changes into local and push your changes in to remote 
+
+case --2
+
+## git fetch and merge ##
+use git fetch and then git merge also will work
+
+git fetch origin <branch name>  ---if multi branches are there
+
+git fetch   ----if you are in same branch single
+
+case --3 
+
+git pull --rebase (if single branch is there)
+
+git pull origin <branch name> --rebase (if multi branches are there )
+
+--------------- # git cherry pick #------------------------
+
+if we want merge specific commit into upstream branch (like main ) cherry pick will help us 
+
+git cherry-pic <commit id>
+
