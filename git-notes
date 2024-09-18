@@ -10,6 +10,11 @@ GIT-COMMANDS
 git config --global user.name --- to check configured name 
 git config --global user.email --- to check configured email
 
+git config --global user.name "shubham"
+git config --global user.email "shubham@gmail.com"
+              (to add user and mail)
+
+
 
 --------------------git workflow------------
 
