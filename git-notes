@@ -27,8 +27,8 @@ git commit -m "comment"
 -------------------------------------------------
 
 git diff ------ compare changes local directory to staging area
-git diff --staged --comapare chnages staging to local repo
-git diff head ----comapare changes local directory to local repo
+git diff --staged --compare chnages staging to local repo
+git diff head ----compare changes local directory to local repo
 
 git diff commit id to commit id -----compare chnages in to two commits
 
